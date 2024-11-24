@@ -1,1 +1,10 @@
+#!bin/bash
 
+curl -s "https://aviationweather.gov/api/data/metar?ids=KMCI&format=json&taf=false&hours=12&bbox=40%2C-90%2C45%2C-85" -> aviation.json
+
+receipt_time=$(jq -r '.data[0].receiptTime' aviation.json)
+
+first_six_values=$(jq -r '.data[0] | .[0:6]' aviation.json)
+
+echo "Receipt Time: $receipt_time"
+echo "First Six Values: $first_six_values"
