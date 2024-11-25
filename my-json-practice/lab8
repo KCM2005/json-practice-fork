@@ -15,7 +15,7 @@ with open('data/schacon.repos.json', 'r') as file:
     data = json.load(file)
 
 output_lines = []
-for repo in data[:5]:  # Limit to first 5 repositories
+for repo in data[:5]:  
     name = repo.get('name')
     html_url = repo.get('html_url')
     updated_at = repo.get('updated_at')
