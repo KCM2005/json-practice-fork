@@ -11,6 +11,7 @@ echo "First Six Values: $first_six_values"
 
 
 
+#Python Script
 with open('data/schacon.repos.json', 'r') as file:
     data = json.load(file)
 
