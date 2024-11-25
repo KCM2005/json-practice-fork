@@ -8,3 +8,22 @@ first_six_values=$(jq -r '.data[0] | .[0:6]' aviation.json)
 
 echo "Receipt Time: $receipt_time"
 echo "First Six Values: $first_six_values"
+
+
+
+with open('data/schacon.repos.json', 'r') as file:
+    data = json.load(file)
+
+output_lines = []
+for repo in data[:5]:  # Limit to first 5 repositories
+    name = repo.get('name')
+    html_url = repo.get('html_url')
+    updated_at = repo.get('updated_at')
+    visibility = repo.get('visibility')
+
+    line = f"{name},{html_url},{updated_at},{visibility}"
+    output_lines.append(line)
+
+with open('chacon.csv', 'w') as csv_file:
+    for line in output_lines:
+        csv_file.write(line + "\n")
